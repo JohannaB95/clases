@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        class Automovil {
+            #marca;
+            #linea;
+            #modelo;
+            #cilindraje;
+            #precio;
+
+            constructor( ){
+                this.#marca = '';
+                this.#linea = '';
+                this.#modelo = 0;
+                this.#cilindraje = '';
+                this.#precio= 0;
+            }
+
+            
+            set setMarca(value) {
+                this.#marca = value;
+            }
+
+            get getMarca( ){
+                return this.#marca;
+            }
+
+            set setLinea(value) {
+                this.#linea = value;
+            }
+
+            get getLinea( ) {
+                return this.#linea;
+            }
+
+            set setModelo(value){
+                this.#modelo = value;
+            }
+
+            get getModelo( ){
+                return this.#modelo;
+            }
+
+            set setCilindraje(value){
+                this.#cilindraje = value;
+            }
+
+            get getCilindraje( ){
+                return this.#cilindraje;
+            }
+
+            set setPrecio(value){
+                this.#precio = value;
+            }
+
+            get getPrecio( ){
+                return this.#precio;
+            }
+
+            informacionVehiculo ( ){
+                console.log(`Este automóvil tiene la siguiente información:\n` + `Es de la marca ${this.#marca}\n` +
+                `De la línea ${this. #linea}\n` + `Modelo ${this.#modelo}\n` + `Tiene un cilindraje de ${this. #cilindraje}\n`
+                + `Con un precio de ${this.#precio}`);
+            }
+
+            revisionTecnicoMecanica( ){
+            const anioActual = new Date( ).getFullYear( );
+                const antiguedad = anioActual - this.#modelo;
+            
+                if(antiguedad > 5){
+                    console.log(`El auto de la marca ${this.#marca} tiene ${antiguedad} años, por lo que debe pasar a revisión tecnico mecánica`)
+                } else{
+                    console.log(`El auto de la marca ${this.#marca} tiene ${antiguedad} años, por lo que no debe pasar a revisión tecnico mecánica`)
+                }
+            }
+
+            nivelGasolina( ){
+                const nivelGasolina = Math.floor(Math.random()*101);
+
+                if(nivelGasolina >= 0 || nivelGasolina <= 100){
+                    console.log(`El nivel de combustible del auto ${this.#marca} es de ${nivelGasolina}%`)
+                } 
+            }
+        }
+
+        class ModeloSedan extends Automovil{
+            #pasajeros;
+            #caja;
+            #cinturones;
+
+            constructor( ){
+                super( );
+                this.#pasajeros = 0;
+                this.#caja = '';
+                this.#cinturones = 0;
+            }
+
+            set setPasajeros(value){
+                this.#pasajeros = value;
+            }
+
+            get getPasajeros( ){
+                return this.#pasajeros;
+            }
+
+            set setCaja(value){
+                this.#caja = value;
+            }
+
+            get getCaja( ){
+                return this.#caja;
+            }
+
+            set setCinturones(value){
+                this.#cinturones = value;
+            }
+
+            get getCinturones( ){
+                return this.#cinturones;
+            }
+
+            informacionVehiculo( ){
+                console.log(`Este automovil tiene la siguiente información:\n` + `Es de la marca ${this.getMarca}\n` +
+                `De la línea ${this.getLinea}\n` + `Modelo ${this.getModelo}\n` + `Tiene un cilindraje de ${this.getCilindraje}\n`
+                + `Con un precio de ${this.getPrecio}\n` + `El número de pasajeros es de ${this.getPasajeros}\n` + `El tipo de caja es: ${this.getCaja}`);
+            }
+
+            numeroCinturones( ){
+                console.log(`El número de cinturones de seguridad que tiene este auto es ${this.getCinturones}.`);
+            }
+
+        }
+
+        Reflect.preventExtensions(Automovil);
+
+        const auto1 = new Automovil( );
+
+        Reflect.preventExtensions(auto1);
+
+        console.log({auto1});
+
+        auto1.setMarca = 'Ford';
+        auto1.setLinea = 'Deportivo';
+        auto1.setModelo = 2021;
+        auto1.setCilindraje = '4 cilindros';
+        auto1.setPrecio = 98784000;
+    
+        console.log('Auto 1')
+        auto1.informacionVehiculo( );
+        auto1.revisionTecnicoMecanica( );
+        auto1.nivelGasolina( );
+        
+        const auto2 = new Automovil( );
+
+        Reflect.preventExtensions(auto2);
+
+        console.log({auto2});
+
+        auto2.setMarca = 'Honda';
+        auto2.setLinea = 'Compacto';
+        auto2.setModelo = 2017;
+        auto2.setCilindraje =  '4 cilindros';
+        auto2.setPrecio = 95687000;
+
+        console.log('Auto 2');
+        auto2.informacionVehiculo( );
+        auto2.revisionTecnicoMecanica( );
+        auto2.nivelGasolina( );
+
+        Reflect.preventExtensions(ModeloSedan);
+
+        const auto3 = new Automovil( );
+
+        Reflect.preventExtensions(auto3);
+
+        console.log({auto3});
+
+        auto3.setMarca = 'Toyota'
+        auto3.setLinea = 'SUV Familiar';
+        auto3.setModelo = 2020;
+        auto3.setCilindraje =  '4 cilindros';
+        auto3.setPrecio =  85674000;
+
+        console.log('Auto 3');
+        auto3.informacionVehiculo( );
+        auto3.revisionTecnicoMecanica( );
+        auto3.nivelGasolina( );
+
+        const auto4 = new ModeloSedan( );
+
+        Reflect.preventExtensions(auto4);
+
+        console.log({auto4});
+
+        auto4.setMarca = 'Toyota';
+        auto4.setLinea = 'Toyota corolla'
+        auto4.setModelo = 2019;
+        auto4.setCilindraje = '6 cilindros';
+        auto4.setPrecio = 69543500;
+        auto4.setPasajeros = 5;
+        auto4.setCaja = 'automática';
+        auto4.setCinturones = 4;
+
+        console.log('Auto 4');
+        auto4.informacionVehiculo( );
+        auto4.numeroCinturones( );
+
+    </script>
+</body>
+</html>

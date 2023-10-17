@@ -1,0 +1,154 @@
+com<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        class Instructor {
+            #nombre;
+            #linea;
+            #jornada;
+
+            constructor ( ){
+                this.#nombre = ' ';
+                this.#linea = ' ';
+                this.#jornada = ' ';
+            }
+
+            set setNombre(value){
+                this.#nombre = value;
+            }
+
+            get getNombre( ){
+                return this.#nombre;
+            }
+
+            set setLinea(value){
+                this.#linea = value;
+            }
+
+            get getLinea( ){
+                return this.#linea;
+            }
+
+            set setJornada(value){
+                this.#jornada = value;
+            }
+
+            get getJornada( ){
+                return this.#jornada;
+            }
+
+            informacionInstructor( ){
+                console.log(`La información del instructor es la siguiente:\n` + `Nombre: ${this.#nombre}\n` +
+                `Línea de formación: ${this.#linea}\n` + `Jornada asignada: ${this.#jornada}`);
+            }
+
+            programaFormacion = function( ){
+                if ( this.#linea === 'Software') {
+                    console.log(`El instructor es de la línea de ${this.#linea}, entonces el programa es Análisis y desarrollo de software`);
+                } else if (this.#linea === 'Hardware') { 
+                    console.log(`El instructor es de la línea de ${this.#linea},entonces el programa es Administración de redes`);
+                } else if (this.#linea === 'Otra línea') { 
+                console.log(`El instructor es de ${this.#linea}, no se tiene registro calificado para esas líneas tecnológicas`);
+                }
+            }
+        }
+
+        class InstructorPlanta extends Instructor{
+                #fechaVinculacion;
+
+                constructor( ){
+                    super( );
+                    this.#fechaVinculacion = ' ';
+                }
+
+                set setFechaVinculacion(value){
+                    this.#fechaVinculacion = value;
+                }
+
+                get getFechaVinculacion( ){
+                    return this.#fechaVinculacion;
+                }
+
+                informacionInstructor( ){
+                    console.log(`La información del instructor es la siguiente:\n` + `Nombre: ${this.getNombre}\n` +
+                    `Línea de formación: ${this.getLinea}\n` + `Jornada asignada: ${this.getJornada}\n` 
+                    + `Fecha de vinculación: ${this.#fechaVinculacion}`);
+                }
+
+                tiempoVinculacion( ){
+                    
+                    let fecha1 = new Date('9/12/2021');
+                    let fecha2 = new Date( );
+                    let diferenciaTiempo = (fecha2 - fecha1);
+                    let diferenciaMeses = Math.floor(diferenciaTiempo / (1000 * 60 * 60 * 24 * 30));
+
+                        console.log(`El tiempo total que lleva vinculado el instructor es de: ${diferenciaMeses} meses`);
+                }
+            }
+
+            Reflect.preventExtensions(Instructor);
+
+            const instructor1 = new Instructor;
+
+            Reflect.preventExtensions(instructor1);
+
+            console.log({instructor1});
+
+            instructor1.setNombre = 'Mariana Lopez';
+            instructor1.setLinea = 'Software';
+            instructor1.setJornada = 'Mañana';
+
+            instructor1.informacionInstructor( );
+            instructor1.programaFormacion( );
+
+            const instructor2 = new Instructor;
+
+            Reflect.preventExtensions(instructor2);
+
+            console.log({instructor2});
+
+            instructor2.setNombre = 'Santiago Cardenas';
+            instructor2.setLinea = 'Hardware';
+            instructor2.setJornada = 'Tarde';
+
+            instructor2.informacionInstructor( );
+            instructor2.programaFormacion( );
+
+            const instructor3 = new Instructor;
+
+            Reflect.preventExtensions(instructor3);
+
+            console.log({instructor3});
+            
+            instructor3.setNombre = 'Lina Sanchez';
+            instructor3.setLinea = 'Otra línea';
+            instructor3.setJornada = 'Noche';
+
+            instructor3.informacionInstructor( );
+            instructor3.programaFormacion( );
+
+            Reflect.preventExtensions(InstructorPlanta);
+
+            const instructorPlanta1 = new InstructorPlanta;
+
+            console.log({instructorPlanta1});
+
+            Reflect.preventExtensions(instructorPlanta1);
+
+            instructorPlanta1.setNombre = 'Sebastian Mejia';
+            instructorPlanta1.setLinea = 'Software';
+            instructorPlanta1.setJornada = 'Mañana';
+            instructorPlanta1.setFechaVinculacion = '9/12/2021';
+
+            instructorPlanta1.informacionInstructor( );
+            instructorPlanta1.tiempoVinculacion( );
+    </script>
+</body>
+</html>

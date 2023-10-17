@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        class PlatoRestaurante{
+            #plato;
+            #cantidad;
+            #precio;
+
+            constructor( ){
+                this.#plato = ' ';
+                this.#cantidad = 0;
+                this.#precio = 0;
+            }
+
+            set setPlato(value){
+                this.#plato = value;
+            }
+
+            get getPlato( ){
+                return this.#plato;
+            }
+
+            set setCantidad(value){
+                this.#cantidad = value;
+            }
+
+            get getCantidad( ){
+                return this.#cantidad;
+            }
+
+            set setPrecio(value){
+                this.#precio = value;
+            }
+
+            get getPrecio( ){
+                return this.#precio;
+            }
+
+            pedidoRestaurante( ){
+                console.log(`El pedido es el siguiente: \n` + `Plato: ${this.#plato}\n` + `Cantidad: ${this.#cantidad}\n`
+                 + `Precio: ${this.#precio} cada una`)
+            }
+
+            valorPedido( ){
+                let total = this.#precio * this.#cantidad;
+                console.log(`El valor del pedido es de $${total}`)
+            }
+
+            descuentoPedido( ){
+                if (this.#cantidad > 2 || this.#precio >= 50000) {
+                    let descuento = 10;
+                    let total1 = this.#precio * this.#cantidad;
+                    let descuentoAplicado = (total1 * descuento) / 100;
+                    let totalDescuento = total1 - descuentoAplicado;
+                        console.log(`El valor del pedido con descuento es de $ ${totalDescuento}`);
+                    } else {
+                        console.log(`No se aplica ningún descuento`);
+                }
+            }       
+        } 
+
+        class RestauranteDomicilio extends PlatoRestaurante{
+            #nombreRestaurante;
+            #tiempoEntrega;
+            #valorDomicilio;
+
+            constructor( ){
+                super( );
+                this.#nombreRestaurante = '';
+                this.#tiempoEntrega = 0;
+                this.#valorDomicilio = 0;
+            }
+
+            set setNombreRestaurante(value){
+                this.#nombreRestaurante = value;
+            }
+
+            get getNombreRestaurante( ){
+                return this.#nombreRestaurante;
+            }
+
+            set setTiempoEntrega(value){
+                this.#tiempoEntrega = value;
+            }
+
+            get getTiempoEntrega( ){
+                return this.#tiempoEntrega;
+            }
+
+            set setValorDomicilio(value){
+                this.#valorDomicilio = value;
+            }
+
+            get getValorDomicilio( ){
+                return this.#valorDomicilio;
+            }
+
+            informacionRestaurante( ){
+                console.log(`El restaurante de comidas rápidas ${this.#nombreRestaurante} cuenta con gran variedad de platos como ${this.getPlato}` 
+                + ` comidas deliciosas y a buenos precios,` + ` contamos con servicio a domicilio de ${this.#tiempoEntrega} minutos aprox.`
+                + ` Este servicio cuesta $${this.#valorDomicilio} pesos.`);
+            }
+
+            valorPedidoDomicilio( ){
+               let domicilio = this.getPrecio * this.getCantidad + this.#valorDomicilio;
+               console.log(`El valor del pedido incluido el domicilio es de $${domicilio} pesos.`);
+            }
+        }   
+
+        Reflect.preventExtensions(PlatoRestaurante);
+
+        const pedido1 = new PlatoRestaurante;
+
+        Reflect.preventExtensions(pedido1);
+
+        console.log({pedido1});
+
+        pedido1.setPlato = 'Hamburguesa';
+        pedido1.setCantidad = 2;
+        pedido1.setPrecio = 15000;
+
+        pedido1.pedidoRestaurante( );
+        pedido1.valorPedido( );
+        pedido1.descuentoPedido( );
+
+        const pedido2 = new PlatoRestaurante;
+
+        Reflect.preventExtensions(pedido2);
+
+        console.log({pedido2});
+
+        pedido2.setPlato ='Perro Caliente';
+        pedido2.setCantidad = 1;
+        pedido2.setPrecio = 10500;
+
+        pedido2.pedidoRestaurante( );
+        pedido2.valorPedido( );
+        pedido2.descuentoPedido( );
+
+        const pedido3 = new PlatoRestaurante;
+
+        Reflect.preventExtensions(pedido3);
+
+        console.log({pedido3});
+
+        pedido3.setPlato ='Salchipapa';
+        pedido3.setCantidad = 4;
+        pedido3.setPrecio = 16500;
+
+        pedido3.pedidoRestaurante( );
+        pedido3.valorPedido( );
+        pedido3.descuentoPedido( );
+
+        Reflect.preventExtensions(RestauranteDomicilio);
+
+        const pedidoDomicilio = new RestauranteDomicilio;
+
+        Reflect.preventExtensions(pedidoDomicilio);
+
+        console.log({pedidoDomicilio});
+
+        pedidoDomicilio.setPlato = 'Mazorcada';
+        pedidoDomicilio.setCantidad = 2;
+        pedidoDomicilio.setPrecio = 18000;
+        pedidoDomicilio.setNombreRestaurante = 'FlashBurger',
+        pedidoDomicilio.setTiempoEntrega = 30;
+        pedidoDomicilio.setValorDomicilio = 3000;
+
+        pedidoDomicilio.informacionRestaurante( );
+        pedidoDomicilio.valorPedidoDomicilio( );
+
+    </script>
+</body>
+</html>
