@@ -1,152 +1,213 @@
-com<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ejercicio Instructor Clases</title>
 </head>
 <body>
 
     <script>
 
+        //Se define la clase Instructor
         class Instructor {
+            // Se declaran los atributos de la clase y que serán privados
             #nombre;
             #linea;
             #jornada;
 
+            // Se llama al constructor que inicializa los atributos de la clase
             constructor ( ){
+                //Se inicializa nombre como un string vacio
                 this.#nombre = ' ';
+                //Se inicializa linea como un string vacio
                 this.#linea = ' ';
+                 //Se inicializa jornada como un string vacio
                 this.#jornada = ' ';
             }
 
+            //Se crea un método setter para establecer el valor del atributo #nombre
             set setNombre(value){
                 this.#nombre = value;
             }
 
+            //Se crea un método getter para obtener el valor del atributo #nombre
             get getNombre( ){
                 return this.#nombre;
             }
 
+            //Se crea un método setter para establecer el valor del atributo #linea
             set setLinea(value){
                 this.#linea = value;
             }
 
+            //Se crea un método getter para obtener el valor del atributo #linea
             get getLinea( ){
                 return this.#linea;
             }
 
+            //Se crea un método setter para establecer el valor del atributo #jornada
             set setJornada(value){
                 this.#jornada = value;
             }
 
+             //Se crea un método getter para obtener el valor del atributo #jornada
             get getJornada( ){
                 return this.#jornada;
             }
 
+            //Se crea un método llamado informacionInstructor sin parámetros
             informacionInstructor( ){
+                //Se imprime en la consola la información del instructor
                 console.log(`La información del instructor es la siguiente:\n` + `Nombre: ${this.#nombre}\n` +
                 `Línea de formación: ${this.#linea}\n` + `Jornada asignada: ${this.#jornada}`);
             }
 
-            programaFormacion = function( ){
+            //Se crea un método llamado programaFormacion sin parámetros
+            programaFormacion ( ){
+                //Si la propiedad privada #linea de la instancia actual es igual a la cadena 'Software'.
                 if ( this.#linea === 'Software') {
+                    //Se imprime en la consola un mensaje indicando a que programa pertenece
                     console.log(`El instructor es de la línea de ${this.#linea}, entonces el programa es Análisis y desarrollo de software`);
+                //Si la propiedad privada #linea de la instancia actual es igual a la cadena 'Hardware'.
                 } else if (this.#linea === 'Hardware') { 
+                    //Se imprime en la consola un mensaje indicando a que programa pertenece
                     console.log(`El instructor es de la línea de ${this.#linea},entonces el programa es Administración de redes`);
+                //Si la propiedad privada #linea de la instancia actual es igual a la cadena 'Otra línea'.    
                 } else if (this.#linea === 'Otra línea') { 
-                console.log(`El instructor es de ${this.#linea}, no se tiene registro calificado para esas líneas tecnológicas`);
+                    //Se imprime en la consola un mensaje indicando a que programa pertenece
+                    console.log(`El instructor es de ${this.#linea}, no se tiene registro calificado para esas líneas tecnológicas`);
                 }
             }
         }
 
+        //Se define la clase InstructorPlanta que hereda propiedades o métodos de la clase Instructor
         class InstructorPlanta extends Instructor{
+                // Se declaran los atributos de la clase y que serán privados
                 #fechaVinculacion;
 
+                // Se llama al constructor que inicializa los atributos de la clase
                 constructor( ){
+                    /*Se utiliza dentro del constructor de una clase derivada (subclase) para llamar al constructor de la 
+                    clase base (superclase)*/
                     super( );
+                    //Se inicializa fechaVinculacion  como un string vacio
                     this.#fechaVinculacion = ' ';
                 }
 
+                //Se crea un método setter para establecer el valor del atributo #fechaVinculacion
                 set setFechaVinculacion(value){
                     this.#fechaVinculacion = value;
                 }
 
+                //Se crea un método getter para obtener el valor del atributo #fechaVinculacion
                 get getFechaVinculacion( ){
                     return this.#fechaVinculacion;
                 }
 
+                //Se crea un método llamado informacionInstructor sin parámetros
                 informacionInstructor( ){
+                    //Se imprime en la consola la información del instructor
                     console.log(`La información del instructor es la siguiente:\n` + `Nombre: ${this.getNombre}\n` +
                     `Línea de formación: ${this.getLinea}\n` + `Jornada asignada: ${this.getJornada}\n` 
                     + `Fecha de vinculación: ${this.#fechaVinculacion}`);
                 }
 
+                //Se crea un método llamado tiempoVinculacion sin parámetros
                 tiempoVinculacion( ){
                     
+                    //Se declara una variable llamda fecha1 que almacena una fecha
                     let fecha1 = new Date('9/12/2021');
+                    //Se declara una variable llamda fecha2 que almacena el valor obtenido por new Date
                     let fecha2 = new Date( );
+                    //Se declara una variable llamada diferenciaTiempo que almacena el valor obtenido de la resta entre fecha1 y fecha2
                     let diferenciaTiempo = (fecha2 - fecha1);
+                    /*Se declara una variable llamada diferenciaMeses que almacena el valor de la diferencia en meses
+                    entre las dos fechas dadas, redondeada hacia abajo. */
                     let diferenciaMeses = Math.floor(diferenciaTiempo / (1000 * 60 * 60 * 24 * 30));
-
+                        //Se imprime en la consola un mensaje indicando cuanto tiempo lleva vinculado el instructor
                         console.log(`El tiempo total que lleva vinculado el instructor es de: ${diferenciaMeses} meses`);
                 }
             }
 
+            /*Se utiliza para prevenir la extensión de un objeto lo que significa que no se pueden agregar nuevas 
+            propiedades a ese objeto una vez que ha sido marcado como no extensible*/
             Reflect.preventExtensions(Instructor);
 
+            //Se crea una nueva instancia de la clase Instructor y se almacena en la variable constante llamada instructor1
             const instructor1 = new Instructor;
 
+            //Se usa para hacer que la instancia instructor1 sea no extensible
             Reflect.preventExtensions(instructor1);
 
+            //Se imprime en la consola un objeto que contiene la información actual de instructor1
             console.log({instructor1});
 
+            //Se asignan las propiedades de instructor1
             instructor1.setNombre = 'Mariana Lopez';
             instructor1.setLinea = 'Software';
             instructor1.setJornada = 'Mañana';
 
+            //Se llama a los métodos
             instructor1.informacionInstructor( );
             instructor1.programaFormacion( );
 
+            //Se crea una nueva instancia de la clase Instructor y se almacena en la variable constante llamada instructor2
             const instructor2 = new Instructor;
 
+            //Se usa para hacer que la instancia instructor2 sea no extensible
             Reflect.preventExtensions(instructor2);
 
+            //Se imprime en la consola un objeto que contiene la información actual de instructor2
             console.log({instructor2});
 
+            //Se asignan las propiedades de instructor2
             instructor2.setNombre = 'Santiago Cardenas';
             instructor2.setLinea = 'Hardware';
             instructor2.setJornada = 'Tarde';
 
+            //Se llama a los métodos
             instructor2.informacionInstructor( );
             instructor2.programaFormacion( );
 
+            //Se crea una nueva instancia de la clase Instructor y se almacena en la variable constante llamada instructor3
             const instructor3 = new Instructor;
 
+            //Se usa para hacer que la instancia instructor3 sea no extensible
             Reflect.preventExtensions(instructor3);
 
+            //Se imprime en la consola un objeto que contiene la información actual de instructor3
             console.log({instructor3});
             
+            //Se asignan las propiedades de instructor3
             instructor3.setNombre = 'Lina Sanchez';
             instructor3.setLinea = 'Otra línea';
             instructor3.setJornada = 'Noche';
 
+            //Se llama a los métodos
             instructor3.informacionInstructor( );
             instructor3.programaFormacion( );
 
+            /*Se utiliza para prevenir la extensión de un objeto lo que significa que no se pueden agregar nuevas 
+            propiedades a ese objeto una vez que ha sido marcado como no extensible*/            
             Reflect.preventExtensions(InstructorPlanta);
 
+            //Se crea una nueva instancia de la clase InstructorPlanta y se almacena en la variable constante llamada instructorPlanta1
             const instructorPlanta1 = new InstructorPlanta;
 
+            //Se imprime en la consola un objeto que contiene la información actual de instructorPlanta1
             console.log({instructorPlanta1});
 
+            //Se usa para hacer que la instancia instructorPlanta1 sea no extensible
             Reflect.preventExtensions(instructorPlanta1);
 
+            //Se asignan las propiedades de instructorPlanta1
             instructorPlanta1.setNombre = 'Sebastian Mejia';
             instructorPlanta1.setLinea = 'Software';
             instructorPlanta1.setJornada = 'Mañana';
             instructorPlanta1.setFechaVinculacion = '9/12/2021';
 
+            //Se llama a los métodos
             instructorPlanta1.informacionInstructor( );
             instructorPlanta1.tiempoVinculacion( );
     </script>

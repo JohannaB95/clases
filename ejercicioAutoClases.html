@@ -1,205 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ejercicio Automovil Clases</title>
 </head>
+
 <body>
-    
+
     <script>
 
+        //Se define la clase Automovil
         class Automovil {
+            // Se declaran los atributos de la clase y que serán privados
             #marca;
             #linea;
             #modelo;
             #cilindraje;
             #precio;
 
-            constructor( ){
+            // Se llama al constructor que inicializa los atributos de la clase
+            constructor() {
+                //Se inicializa marca como un string vacio
                 this.#marca = '';
+                //Se inicializa linea como un string vacio
                 this.#linea = '';
+                //Se inicializa modelo con un valor de 0
                 this.#modelo = 0;
+                //Se inicializa cilindraje como un string vacio
                 this.#cilindraje = '';
-                this.#precio= 0;
+                //Se inicializa precio con un valor de 0
+                this.#precio = 0;
             }
 
-            
+            //Se crea un método setter para establecer el valor del atributo #marca
             set setMarca(value) {
                 this.#marca = value;
             }
 
-            get getMarca( ){
+            //Se crea un método getter para obtener el valor del atributo #marca
+            get getMarca() {
                 return this.#marca;
             }
 
+            //Se crea un método setter para establecer el valor del atributo #linea
             set setLinea(value) {
                 this.#linea = value;
             }
 
-            get getLinea( ) {
+            //Se crea un método getter para obtener el valor del atributo #linea
+            get getLinea() {
                 return this.#linea;
             }
 
-            set setModelo(value){
+            //Se crea un método setter para establecer el valor del atributo #modelo
+            set setModelo(value) {
                 this.#modelo = value;
             }
 
-            get getModelo( ){
+            //Se crea un método getter para obtener el valor del atributo #modelo
+            get getModelo() {
                 return this.#modelo;
             }
 
-            set setCilindraje(value){
+            //Se crea un método setter para establecer el valor del atributo #cilindraje
+            set setCilindraje(value) {
                 this.#cilindraje = value;
             }
 
-            get getCilindraje( ){
+            //Se crea un método getter para obtener el valor del atributo #cilindraje
+            get getCilindraje() {
                 return this.#cilindraje;
             }
 
-            set setPrecio(value){
+            //Se crea un método setter para establecer el valor del atributo #precio
+            set setPrecio(value) {
                 this.#precio = value;
             }
 
-            get getPrecio( ){
+            //Se crea un método getter para obtener el valor del atributo #precio
+            get getPrecio() {
                 return this.#precio;
             }
 
-            informacionVehiculo ( ){
+            //Se crea un método llamado informacionVehiculo sin parámetros
+            informacionVehiculo() {
+                //Se imprime en la consola la información del vehiculo
                 console.log(`Este automóvil tiene la siguiente información:\n` + `Es de la marca ${this.#marca}\n` +
-                `De la línea ${this. #linea}\n` + `Modelo ${this.#modelo}\n` + `Tiene un cilindraje de ${this. #cilindraje}\n`
-                + `Con un precio de ${this.#precio}`);
+                    `De la línea ${this.#linea}\n` + `Modelo ${this.#modelo}\n` + `Tiene un cilindraje de ${this.#cilindraje}\n`
+                    + `Con un precio de ${this.#precio}`);
             }
 
-            revisionTecnicoMecanica( ){
-            const anioActual = new Date( ).getFullYear( );
+            //Se crea un método llamado revisionTecnicoMecanica sin parámetros
+            revisionTecnicoMecanica() {
+
+                //Se declara una variable constante llamada anioActual que almacena el resultado de obtener el año actual
+                const anioActual = new Date().getFullYear();
+                /*Se declara una variable constante llamada antiguedad que almacena el resultado de la resta de 
+                anioActual con el año asignado al atributo modelo*/
                 const antiguedad = anioActual - this.#modelo;
-            
-                if(antiguedad > 5){
+
+                //Se usa un condicional if que tiene como condición que si la antiguedad es mayor a 5,
+                if (antiguedad > 5) {
+                    //Se imprime en la consola un mensaje indicando que se debe pasar a revisión tecnico mecánica
                     console.log(`El auto de la marca ${this.#marca} tiene ${antiguedad} años, por lo que debe pasar a revisión tecnico mecánica`)
-                } else{
+                } else {
+                    //Si no supera los 5 años, se imprime un mensaje indicando que no se tiene que pasar a revisión
                     console.log(`El auto de la marca ${this.#marca} tiene ${antiguedad} años, por lo que no debe pasar a revisión tecnico mecánica`)
                 }
             }
 
-            nivelGasolina( ){
-                const nivelGasolina = Math.floor(Math.random()*101);
+            //Se crea un método llamado nivelGasolina sin parámetros
+            nivelGasolina() {
+            /*Se declara una variable constante llamada nivel de gasolina que almacenara un número aleatorio de
+            0 a 100*/
+                const nivelGasolina = Math.floor(Math.random() * 101);
 
-                if(nivelGasolina >= 0 || nivelGasolina <= 100){
+                //Si el nivel de gasolina es mayor o igual a cero y menor o igual a 100
+                if (nivelGasolina >= 0 || nivelGasolina <= 100) {
+                    //Se imprime un mensaje en la consola indicando el nivel de gasolina del automóvil
                     console.log(`El nivel de combustible del auto ${this.#marca} es de ${nivelGasolina}%`)
-                } 
+                }
             }
         }
 
-        class ModeloSedan extends Automovil{
+        //Se define la clase ModeloSedan que hereda propiedades o métodos de la clase Automovil
+        class ModeloSedan extends Automovil {
+            // Se declaran los atributos de la clase y que serán privados
             #pasajeros;
             #caja;
             #cinturones;
 
-            constructor( ){
-                super( );
+            // Se llama al constructor que inicializa los atributos de la clase
+            constructor() {
+                /*Se utiliza dentro del constructor de una clase derivada (subclase) para llamar al constructor de la 
+                clase base (superclase)*/
+                super();
+                //Se inicializa pasajeros con un valor de 0
                 this.#pasajeros = 0;
+                //Se inicializa caja como un string vacio
                 this.#caja = '';
+                //Se inicializa cinturones con un valor de 0
                 this.#cinturones = 0;
             }
 
-            set setPasajeros(value){
+            //Se crea un método setter para establecer el valor del atributo #pasajeros
+            set setPasajeros(value) {
                 this.#pasajeros = value;
             }
 
-            get getPasajeros( ){
+            //Se crea un método getter para obtener el valor del atributo #pasajeros
+            get getPasajeros() {
                 return this.#pasajeros;
             }
 
-            set setCaja(value){
+            //Se crea un método setter para establecer el valor del atributo #caja
+            set setCaja(value) {
                 this.#caja = value;
             }
 
-            get getCaja( ){
+            //Se crea un método getter para obtener el valor del atributo #caja
+            get getCaja() {
                 return this.#caja;
             }
 
-            set setCinturones(value){
+            //Se crea un método setter para establecer el valor del atributo #cinturones
+            set setCinturones(value) {
                 this.#cinturones = value;
             }
 
-            get getCinturones( ){
+            //Se crea un método getter para obtener el valor del atributo #cinturones
+            get getCinturones() {
                 return this.#cinturones;
             }
 
-            informacionVehiculo( ){
+            //Se crea un método llamado informacionVehiculo sin parámetros
+            informacionVehiculo() {
+                //Se imprime en la consola información sobre el auto
                 console.log(`Este automovil tiene la siguiente información:\n` + `Es de la marca ${this.getMarca}\n` +
-                `De la línea ${this.getLinea}\n` + `Modelo ${this.getModelo}\n` + `Tiene un cilindraje de ${this.getCilindraje}\n`
-                + `Con un precio de ${this.getPrecio}\n` + `El número de pasajeros es de ${this.getPasajeros}\n` + `El tipo de caja es: ${this.getCaja}`);
+                    `De la línea ${this.getLinea}\n` + `Modelo ${this.getModelo}\n` + `Tiene un cilindraje de ${this.getCilindraje}\n`
+                    + `Con un precio de ${this.getPrecio}\n` + `El número de pasajeros es de ${this.getPasajeros}\n` + `El tipo de caja es: ${this.getCaja}`);
             }
 
-            numeroCinturones( ){
+            //Se crea un método llamado numeroCinturones sin parámetros
+            numeroCinturones() {
+                //Se imprime en la consola un mensaje que indica el número de cinturones que posee el auto
                 console.log(`El número de cinturones de seguridad que tiene este auto es ${this.getCinturones}.`);
             }
 
         }
 
+        /*Se utiliza para prevenir la extensión de un objeto lo que significa que no se pueden agregar nuevas 
+        propiedades a ese objeto una vez que ha sido marcado como no extensible*/
         Reflect.preventExtensions(Automovil);
 
-        const auto1 = new Automovil( );
+        //Se crea una nueva instancia de la clase Automovil y se almacena en la variable constante llamada auto1
+        const auto1 = new Automovil();
 
+        //Se usa para hacer que la instancia auto1 sea no extensible
         Reflect.preventExtensions(auto1);
 
-        console.log({auto1});
+        //Se imprime en la consola un objeto que contiene la información actual de auto1
+        console.log({ auto1 });
 
+        //Se asignan las propiedades de auto1
         auto1.setMarca = 'Ford';
         auto1.setLinea = 'Deportivo';
         auto1.setModelo = 2021;
         auto1.setCilindraje = '4 cilindros';
         auto1.setPrecio = 98784000;
-    
-        console.log('Auto 1')
-        auto1.informacionVehiculo( );
-        auto1.revisionTecnicoMecanica( );
-        auto1.nivelGasolina( );
-        
-        const auto2 = new Automovil( );
 
+        //Se imprime un mensaje en la consola
+        console.log('Auto 1');
+        //Se llama a los métodos
+        auto1.informacionVehiculo();
+        auto1.revisionTecnicoMecanica();
+        auto1.nivelGasolina();
+
+        //Se crea una nueva instancia de la clase Automovil y se almacena en la variable constante llamada auto2
+        const auto2 = new Automovil();
+
+        //Se usa para hacer que la instancia auto2 sea no extensible
         Reflect.preventExtensions(auto2);
 
-        console.log({auto2});
+        //Se imprime en la consola un objeto que contiene la información actual de auto2
+        console.log({ auto2 });
 
+        //Se asignan las propiedades de auto 2
         auto2.setMarca = 'Honda';
         auto2.setLinea = 'Compacto';
         auto2.setModelo = 2017;
-        auto2.setCilindraje =  '4 cilindros';
+        auto2.setCilindraje = '4 cilindros';
         auto2.setPrecio = 95687000;
 
+        //Se imprime un mensaje en la consola
         console.log('Auto 2');
-        auto2.informacionVehiculo( );
-        auto2.revisionTecnicoMecanica( );
-        auto2.nivelGasolina( );
+        //Se llama a los métodos
+        auto2.informacionVehiculo();
+        auto2.revisionTecnicoMecanica();
+        auto2.nivelGasolina();
 
+        /*Se utiliza para prevenir la extensión de un objeto lo que significa que no se pueden agregar nuevas 
+        propiedades a ese objeto una vez que ha sido marcado como no extensible*/
         Reflect.preventExtensions(ModeloSedan);
 
-        const auto3 = new Automovil( );
+        //Se crea una nueva instancia de la clase Automovil y se almacena en la variable constante llamada auto3
+        const auto3 = new Automovil();
 
+        //Se usa para hacer que la instancia auto3 sea no extensible
         Reflect.preventExtensions(auto3);
 
-        console.log({auto3});
+        //Se imprime en la consola un objeto que contiene la información actual de auto3
+        console.log({ auto3 });
 
+        //Se asignan las propiedades de auto 3
         auto3.setMarca = 'Toyota'
         auto3.setLinea = 'SUV Familiar';
         auto3.setModelo = 2020;
-        auto3.setCilindraje =  '4 cilindros';
-        auto3.setPrecio =  85674000;
+        auto3.setCilindraje = '4 cilindros';
+        auto3.setPrecio = 85674000;
 
+        //Se imprime un mensaje en la consola
         console.log('Auto 3');
-        auto3.informacionVehiculo( );
-        auto3.revisionTecnicoMecanica( );
-        auto3.nivelGasolina( );
+        //Se llama a los métodos
+        auto3.informacionVehiculo();
+        auto3.revisionTecnicoMecanica();
+        auto3.nivelGasolina();
 
-        const auto4 = new ModeloSedan( );
+        //Se crea una nueva instancia de la clase ModeloSedan y se almacena en la variable constante llamada auto4
+        const auto4 = new ModeloSedan();
 
+        //Se usa para hacer que la instancia auto4 sea no extensible
         Reflect.preventExtensions(auto4);
 
-        console.log({auto4});
+        //Se imprime en la consola un objeto que contiene la información actual de auto4
+        console.log({ auto4 });
 
+        //Se asignan las propiedades de auto 4
         auto4.setMarca = 'Toyota';
         auto4.setLinea = 'Toyota corolla'
         auto4.setModelo = 2019;
@@ -209,10 +287,13 @@
         auto4.setCaja = 'automática';
         auto4.setCinturones = 4;
 
+        //Se imprime un mensaje en la consola
         console.log('Auto 4');
-        auto4.informacionVehiculo( );
-        auto4.numeroCinturones( );
+        //Se llama a los métodos
+        auto4.informacionVehiculo();
+        auto4.numeroCinturones();
 
     </script>
 </body>
+
 </html>
