@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio Restaurante Clases</title>
 </head>
+
 <body>
-    
+
     <script>
 
         //Se define la clase PlatoRestaurante
-        class PlatoRestaurante{
+        class PlatoRestaurante {
             // Se declaran los atributos de la clase y que serán privados
             #plato;
             #cantidad;
             #precio;
 
             // Se llama al constructor que inicializa los atributos de la clase
-            constructor( ){
-                //Se inicializa plato como un string vacio
+            constructor() {
+                //Se inicializa plato con un string vacio
                 this.#plato = ' ';
                 //Se inicializa cantidad con un valor de 0 
                 this.#cantidad = 0;
@@ -27,44 +29,44 @@
             }
 
             //Se crea un método setter para establecer el valor del atributo #plato
-            set setPlato(value){
+            set setPlato(value) {
                 this.#plato = value;
             }
 
             //Se crea un método getter para obtener el valor del atributo #plato
-            get getPlato( ){
+            get getPlato() {
                 return this.#plato;
             }
 
             //Se crea un método setter para establecer el valor del atributo #cantidad
-            set setCantidad(value){
+            set setCantidad(value) {
                 this.#cantidad = value;
             }
 
             //Se crea un método getter para obtener el valor del atributo #cantidad
-            get getCantidad( ){
+            get getCantidad() {
                 return this.#cantidad;
             }
 
             //Se crea un método setter para establecer el valor del atributo #precio
-            set setPrecio(value){
+            set setPrecio(value) {
                 this.#precio = value;
             }
 
             //Se crea un método getter para obtener el valor del atributo #precio
-            get getPrecio( ){
+            get getPrecio() {
                 return this.#precio;
             }
 
             //Se crea un método llamado pedidoRestaurante sin parámetros
-            pedidoRestaurante( ){
+            pedidoRestaurante() {
                 //Se imprime en la consola la información del pedido
                 console.log(`El pedido es el siguiente: \n` + `Plato: ${this.#plato}\n` + `Cantidad: ${this.#cantidad}\n`
-                 + `Precio: ${this.#precio} cada una`)
+                    + `Precio: ${this.#precio} cada una`)
             }
 
             //Se crea un método llamado valorPedido sin parámetros
-            valorPedido( ){
+            valorPedido() {
                 //Se declara una variable llamada total que almacena el total de la multiplicación entre precio y cantidad
                 let total = this.#precio * this.#cantidad;
                 //Se imprime en la consola un mensaje indicando el valor total del pedido
@@ -72,9 +74,9 @@
             }
 
             //Se crea un método llamado descuentoPedido sin parámetros
-            descuentoPedido( ){
+            descuentoPedido() {
                 //Si la cantidad es mayor a 2 y precio es mayor o igual a 50000
-                if (this.#cantidad > 2 || this.#precio >= 50000) {
+                if (this.#cantidad > 2 && this.#precio >= 50000) {
                     //Se declara una variable llamada descuento que se inicializa en 10
                     let descuento = 10;
                     //Se declara una variable llamada total1 que almacena el valor de la multiplicación entre precio y cantidad
@@ -83,28 +85,28 @@
                     let descuentoAplicado = (total1 * descuento) / 100;
                     //Se declara una variable llamada totalDescuento que almacena el valor del precio final del pedido
                     let totalDescuento = total1 - descuentoAplicado;
-                        //Se imprime en la consola el valor del pedido aplicado el descuento
-                        console.log(`El valor del pedido con descuento es de $ ${totalDescuento}`);
-                    } else {
-                        //Si no se cumple la condición no se realiza descuento y se imprime un mensaje en la consola
-                        console.log(`No se aplica ningún descuento`);
+                    //Se imprime en la consola el valor del pedido aplicado el descuento
+                    console.log(`El valor del pedido con descuento es de $ ${totalDescuento}`);
+                } else {
+                    //Si no se cumple la condición no se realiza descuento y se imprime un mensaje en la consola
+                    console.log(`No se aplica ningún descuento`);
                 }
-            }       
-        } 
+            }
+        }
 
         //Se define la clase RestauranteDomicilio que hereda propiedades o métodos de la clase PlatoRestaurante
-        class RestauranteDomicilio extends PlatoRestaurante{
+        class RestauranteDomicilio extends PlatoRestaurante {
             // Se declaran los atributos de la clase y que serán privados
             #nombreRestaurante;
             #tiempoEntrega;
             #valorDomicilio;
 
             // Se llama al constructor que inicializa los atributos de la clase
-            constructor( ){
+            constructor() {
                 /*Se utiliza dentro del constructor de una clase derivada (subclase) para llamar al constructor de la 
                 clase base (superclase)*/
-                super( );
-                //Se inicializa nombreRestaurante como un string vacio
+                super();
+                //Se inicializa nombreRestaurante con un string vacio
                 this.#nombreRestaurante = '';
                 //Se inicializa tiempoEntrega con un valor de 0
                 this.#tiempoEntrega = 0;
@@ -113,51 +115,51 @@
             }
 
             //Se crea un método setter para establecer el valor del atributo #nombreRestaurante
-            set setNombreRestaurante(value){
+            set setNombreRestaurante(value) {
                 this.#nombreRestaurante = value;
             }
 
             //Se crea un método getter para obtener el valor del atributo #nombreRestaurante
-            get getNombreRestaurante( ){
+            get getNombreRestaurante() {
                 return this.#nombreRestaurante;
             }
 
             //Se crea un método setter para establecer el valor del atributo #tiempoEntrega
-            set setTiempoEntrega(value){
+            set setTiempoEntrega(value) {
                 this.#tiempoEntrega = value;
             }
 
             //Se crea un método getter para obtener el valor del atributo #tiempoEntrega
-            get getTiempoEntrega( ){
+            get getTiempoEntrega() {
                 return this.#tiempoEntrega;
             }
 
             //Se crea un método setter para establecer el valor del atributo #valorDomicilio
-            set setValorDomicilio(value){
+            set setValorDomicilio(value) {
                 this.#valorDomicilio = value;
             }
 
             //Se crea un método getter para obtener el valor del atributo #valorDomicilio
-            get getValorDomicilio( ){
+            get getValorDomicilio() {
                 return this.#valorDomicilio;
             }
 
             //Se crea un método llamado informacionRestaurante sin parámetros
-            informacionRestaurante( ){
+            informacionRestaurante() {
                 //Se imprime en la consola información sobre el restaurante
-                console.log(`El restaurante de comidas rápidas ${this.#nombreRestaurante} cuenta con gran variedad de platos como ${this.getPlato}` 
-                + ` comidas deliciosas y a buenos precios,` + ` contamos con servicio a domicilio de ${this.#tiempoEntrega} minutos aprox.`
-                + ` Este servicio cuesta $${this.#valorDomicilio} pesos.`);
+                console.log(`El restaurante de comidas rápidas ${this.#nombreRestaurante} cuenta con gran variedad de platos como ${this.getPlato}`
+                    + ` comidas deliciosas y a buenos precios,` + ` contamos con servicio a domicilio de ${this.#tiempoEntrega} minutos aprox.`
+                    + ` Este servicio cuesta $${this.#valorDomicilio} pesos.`);
             }
 
             //Se crea un método llamado valorPedidoDomicilio sin parámetros 
-            valorPedidoDomicilio( ){
+            valorPedidoDomicilio() {
                 //Se declara una variable llamada domicilio que almacena el valor total del pedido más el domicilio
-               let domicilio = this.getPrecio * this.getCantidad + this.#valorDomicilio;
-               //Se imprime en la consola un mensaje de cuanto cuesta el pedido incluido el domicilio
-               console.log(`El valor del pedido incluido el domicilio es de $${domicilio} pesos.`);
+                let domicilio = this.getPrecio * this.getCantidad + this.#valorDomicilio;
+                //Se imprime en la consola un mensaje de cuanto cuesta el pedido incluido el domicilio
+                console.log(`El valor del pedido incluido el domicilio es de $${domicilio} pesos.`);
             }
-        }   
+        }
 
         /*Se utiliza para prevenir la extensión de un objeto lo que significa que no se pueden agregar nuevas 
         propiedades a ese objeto una vez que ha sido marcado como no extensible*/
@@ -170,17 +172,17 @@
         Reflect.preventExtensions(pedido1);
 
         //Se imprime en la consola un objeto que contiene la información actual de pedido1
-        console.log({pedido1});
+        console.log({ pedido1 });
 
-        //Se asignan las propiedades de pedido1
+        //Se asignan los valores de las propiedades de pedido1
         pedido1.setPlato = 'Hamburguesa';
         pedido1.setCantidad = 2;
         pedido1.setPrecio = 15000;
 
         //Se llama a los métodos
-        pedido1.pedidoRestaurante( );
-        pedido1.valorPedido( );
-        pedido1.descuentoPedido( );
+        pedido1.pedidoRestaurante();
+        pedido1.valorPedido();
+        pedido1.descuentoPedido();
 
         //Se crea una nueva instancia de la clase PlatoRestaurante y se almacena en la variable constante llamada pedido2
         const pedido2 = new PlatoRestaurante;
@@ -189,17 +191,17 @@
         Reflect.preventExtensions(pedido2);
 
         //Se imprime en la consola un objeto que contiene la información actual de pedido2
-        console.log({pedido2});
+        console.log({ pedido2 });
 
-        //Se asignan las propiedades de pedido2
-        pedido2.setPlato ='Perro Caliente';
+        //Se asignan los valores de las propiedades de pedido2
+        pedido2.setPlato = 'Perro Caliente';
         pedido2.setCantidad = 1;
         pedido2.setPrecio = 10500;
 
         //Se llama a los métodos
-        pedido2.pedidoRestaurante( );
-        pedido2.valorPedido( );
-        pedido2.descuentoPedido( );
+        pedido2.pedidoRestaurante();
+        pedido2.valorPedido();
+        pedido2.descuentoPedido();
 
         //Se crea una nueva instancia de la clase PlatoRestaurante y se almacena en la variable constante llamada pedido3
         const pedido3 = new PlatoRestaurante;
@@ -208,17 +210,17 @@
         Reflect.preventExtensions(pedido3);
 
         //Se imprime en la consola un objeto que contiene la información actual de pedido3
-        console.log({pedido3});
+        console.log({ pedido3 });
 
-        //Se asignan las propiedades de pedido3
-        pedido3.setPlato ='Salchipapa';
+        //Se asignan los valores de las propiedades de pedido3
+        pedido3.setPlato = 'Salchipapa';
         pedido3.setCantidad = 4;
         pedido3.setPrecio = 16500;
 
         //Se llama a los métodos
-        pedido3.pedidoRestaurante( );
-        pedido3.valorPedido( );
-        pedido3.descuentoPedido( );
+        pedido3.pedidoRestaurante();
+        pedido3.valorPedido();
+        pedido3.descuentoPedido();
 
         /*Se utiliza para prevenir la extensión de un objeto lo que significa que no se pueden agregar nuevas 
         propiedades a ese objeto una vez que ha sido marcado como no extensible*/
@@ -231,20 +233,21 @@
         Reflect.preventExtensions(pedidoDomicilio);
 
         //Se imprime en la consola un objeto que contiene la información actual de pedidoDomicilio
-        console.log({pedidoDomicilio});
+        console.log({ pedidoDomicilio });
 
-        //Se asignan las propiedades de pedidoDomicilio
+        //Se asignan los valores de las propiedades de pedidoDomicilio
         pedidoDomicilio.setPlato = 'Mazorcada';
         pedidoDomicilio.setCantidad = 2;
         pedidoDomicilio.setPrecio = 18000;
         pedidoDomicilio.setNombreRestaurante = 'FlashBurger',
-        pedidoDomicilio.setTiempoEntrega = 30;
+            pedidoDomicilio.setTiempoEntrega = 30;
         pedidoDomicilio.setValorDomicilio = 3000;
 
         //Se llama a los métodos
-        pedidoDomicilio.informacionRestaurante( );
-        pedidoDomicilio.valorPedidoDomicilio( );
+        pedidoDomicilio.informacionRestaurante();
+        pedidoDomicilio.valorPedidoDomicilio();
 
     </script>
 </body>
+
 </html>
